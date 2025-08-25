@@ -15,13 +15,13 @@ import { useDoctorAuth } from "./hooks/useDoctorAuth";
 
 const queryClient = new QueryClient();
 
-// Protected Route Component
+// Protected Route Component for Doctor Portal
 function ProtectedDoctorRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useDoctorAuth();
   return isAuthenticated ? <>{children}</> : <Navigate to="/doctor/login" replace />;
 }
 
-const App = () => {
+function App() {
   return (
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
@@ -62,6 +62,6 @@ const App = () => {
       </QueryClientProvider>
     </BrowserRouter>
   );
-};
+}
 
 export default App;
