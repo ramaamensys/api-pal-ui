@@ -38,29 +38,51 @@ export default function Index() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="relative bg-gradient-hero text-primary-foreground">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        <div className="relative container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Left - HealthCare Connect Logo */}
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary-foreground/10 rounded-full">
+                <Stethoscope className="h-8 w-8" />
+              </div>
+              <h1 className="text-2xl lg:text-3xl font-bold tracking-tight">
+                HealthCare
+                <span className="bg-primary-foreground/20 px-2 rounded-lg ml-2">Connect</span>
+              </h1>
+            </div>
+            
+            {/* Right - Doctor Login */}
+            <Button 
+              variant="outline"
+              size="lg"
+              asChild
+              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold px-6"
+            >
+              <Link to="/doctor/login" className="flex items-center gap-2">
+                <Stethoscope className="h-5 w-5" />
+                Doctor Login
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </header>
+
       {/* Hero Section */}
       <section className="relative bg-gradient-hero text-primary-foreground overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
         <div className="relative container mx-auto px-4 py-16 lg:py-24">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            <div className="space-y-4">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="p-3 bg-primary-foreground/10 rounded-full">
-                  <Stethoscope className="h-10 w-10" />
-                </div>
-                <h1 className="text-5xl lg:text-6xl font-bold tracking-tight">
-                  HealthCare
-                  <span className="bg-primary-foreground/20 px-2 rounded-lg ml-2">Connect</span>
-                </h1>
-              </div>
-              
+            <div className="space-y-4">              
               <p className="text-xl lg:text-2xl text-primary-foreground/90 max-w-3xl mx-auto leading-relaxed">
                 Find qualified healthcare professionals and book appointments instantly. 
                 Your health journey starts with a simple click.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div className="flex justify-center">
               <Button 
                 size="lg" 
                 asChild
@@ -70,18 +92,6 @@ export default function Index() {
                   <Users className="h-5 w-5" />
                   Browse Doctors
                   <ArrowRight className="h-5 w-5" />
-                </Link>
-              </Button>
-              
-              <Button 
-                variant="outline"
-                size="lg"
-                asChild
-                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold px-8"
-              >
-                <Link to="/doctor/login" className="flex items-center gap-2">
-                  <Stethoscope className="h-5 w-5" />
-                  Doctor Login
                 </Link>
               </Button>
             </div>
