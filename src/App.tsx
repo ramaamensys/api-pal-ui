@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import DoctorList from "./pages/DoctorList";
 import BookAppointment from "./pages/BookAppointment";
@@ -12,20 +12,19 @@ import DoctorDashboard from "./pages/DoctorDashboard";
 import DoctorAppointments from "./pages/DoctorAppointments";
 import DoctorAvailability from "./pages/DoctorAvailability";
 import NotFound from "./pages/NotFound";
-import { useDoctorAuth } from "./hooks/useDoctorAuth";
+import { useDoctorAuthContext } from "./hooks/useDoctorAuth";
 
 const queryClient = new QueryClient();
 
 // Protected Route Component for Doctor Portal
 function ProtectedDoctorRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useDoctorAuth();
+  const { isAuthenticated } = useDoctorAuthContext();
   return isAuthenticated ? <>{children}</> : <Navigate to="/doctor/login" replace />;
 }
 
 function App() {
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
           <Sonner />
@@ -62,7 +61,6 @@ function App() {
           </Routes>
         </TooltipProvider>
       </QueryClientProvider>
-    </BrowserRouter>
   );
 }
 

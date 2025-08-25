@@ -1,5 +1,14 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
 import type { DoctorAuthState, DoctorLoginRequest } from '@/types/doctor-auth';
+
+// Context for doctor authentication
+const DoctorAuthContext = createContext<{
+  isAuthenticated: boolean;
+  doctor: any;
+  token: string | null;
+  login: (credentials: DoctorLoginRequest) => Promise<boolean>;
+  logout: () => void;
+} | undefined>(undefined);
 
 // Mock authentication - replace with real API calls
 const MOCK_DOCTOR = {
@@ -81,4 +90,24 @@ export function useDoctorAuth() {
     login,
     logout
   };
+}
+
+// Provider component
+export function DoctorAuthProvider({ children }: { children: ReactNode }) {
+  const auth = useDoctorAuth();
+  
+  return (
+    <DoctorAuthContext.Provider value={auth}>
+      {children}
+    </DoctorAuthContext.Provider>
+  );
+}
+
+// Hook to use doctor auth context
+export function useDoctorAuthContext() {
+  const context = useContext(DoctorAuthContext);
+  if (context === undefined) {
+    throw new Error('useDoctorAuthContext must be used within a DoctorAuthProvider');
+  }
+  return context;
 }
