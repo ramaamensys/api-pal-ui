@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import DoctorList from "./pages/DoctorList";
 import BookAppointment from "./pages/BookAppointment";
+import PatientAppointments from "./pages/PatientAppointments";
 import DoctorLogin from "./pages/DoctorLogin";
 import DoctorDashboard from "./pages/DoctorDashboard";
 import DoctorAppointments from "./pages/DoctorAppointments";
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<Index />} />
             <Route path="/doctors" element={<DoctorList />} />
             <Route path="/doctors/:doctorId/book" element={<BookAppointment />} />
+            <Route path="/appointments" element={<PatientAppointments />} />
             
             {/* Doctor Routes */}
             <Route path="/doctor/login" element={<DoctorLogin />} />
