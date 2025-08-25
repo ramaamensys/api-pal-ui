@@ -60,29 +60,28 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
-                variant="outline" 
-                size="sm" 
+                size="lg" 
                 asChild
-                className="flex items-center gap-2"
+                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-lg font-semibold px-8"
               >
-                <Link to="/doctors">
-                  <Users className="h-4 w-4" />
-                  Find Doctors
-                  <ArrowRight className="h-4 w-4" />
+                <Link to="/doctors" className="flex items-center gap-2">
+                  <Users className="h-5 w-5" />
+                  Browse Doctors
+                  <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
               
               <Button 
                 variant="outline"
-                size="sm"
+                size="lg"
                 asChild
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold px-8"
               >
                 <Link to="/doctor/login" className="flex items-center gap-2">
-                  <Stethoscope className="h-4 w-4" />
-                  Doctor Portal
+                  <Stethoscope className="h-5 w-5" />
+                  Doctor Login
                 </Link>
               </Button>
             </div>
