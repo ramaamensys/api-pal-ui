@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Stethoscope, Calendar, Users, Clock, ArrowRight, Heart, Shield, Star } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -60,25 +60,30 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex gap-3">
               <Button 
-                size="xl" 
-                variant="secondary"
-                onClick={() => navigate('/doctors')}
-                className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-elevated"
+                variant="outline" 
+                size="sm" 
+                asChild
+                className="flex items-center gap-2"
               >
-                <Users className="h-5 w-5 mr-2" />
-                Find Doctors
-                <ArrowRight className="h-5 w-5 ml-2" />
+                <Link to="/doctors">
+                  <Users className="h-4 w-4" />
+                  Find Doctors
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
               </Button>
               
               <Button 
-                size="xl" 
                 variant="outline"
+                size="sm"
+                asChild
                 className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
               >
-                <Calendar className="h-5 w-5 mr-2" />
-                Learn More
+                <Link to="/doctor/login" className="flex items-center gap-2">
+                  <Stethoscope className="h-4 w-4" />
+                  Doctor Portal
+                </Link>
               </Button>
             </div>
           </div>
