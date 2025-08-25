@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { useNavigate, Link } from "react-router-dom";
 import { DoctorCard } from "@/components/DoctorCard";
 import { DoctorSearch } from "@/components/DoctorSearch";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Users, AlertCircle, Stethoscope, MapPin } from "lucide-react";
+import { Users, AlertCircle, Stethoscope, MapPin, ArrowLeft, Calendar } from "lucide-react";
 import { apiClient } from "@/lib/api";
 import type { DoctorFilters } from "@/types/api";
 
@@ -45,9 +46,38 @@ export default function DoctorList() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
+      {/* Navigation Header */}
       <div className="bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            {/* Left - Back to Home */}
+            <Button 
+              variant="ghost" 
+              asChild
+              className="text-primary-foreground hover:bg-primary-foreground/10 font-semibold"
+            >
+              <Link to="/" className="flex items-center gap-2">
+                <ArrowLeft className="h-4 w-4" />
+                Back to Home
+              </Link>
+            </Button>
+            
+            {/* Right - My Appointments */}
+            <Button 
+              variant="outline"
+              asChild
+              className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-semibold"
+            >
+              <Link to="/appointments" className="flex items-center gap-2">
+                <Calendar className="h-4 w-4" />
+                My Appointments
+              </Link>
+            </Button>
+          </div>
+        </div>
+        
+        {/* Hero Content */}
+        <div className="container mx-auto px-4 pb-12">
           <div className="text-center space-y-4">
             <div className="flex items-center justify-center gap-3">
               <Stethoscope className="h-10 w-10" />
