@@ -12,13 +12,13 @@ import DoctorDashboard from "./pages/DoctorDashboard";
 import DoctorAppointments from "./pages/DoctorAppointments";
 import DoctorAvailability from "./pages/DoctorAvailability";
 import NotFound from "./pages/NotFound";
-import { useDoctorAuthContext } from "./hooks/useDoctorAuth";
+import { useDoctorAuth } from "./hooks/useDoctorAuth";
 
 const queryClient = new QueryClient();
 
 // Protected Route Component for Doctor Portal
 function ProtectedDoctorRoute({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated } = useDoctorAuthContext();
+  const { isAuthenticated } = useDoctorAuth();
   return isAuthenticated ? <>{children}</> : <Navigate to="/doctor/login" replace />;
 }
 

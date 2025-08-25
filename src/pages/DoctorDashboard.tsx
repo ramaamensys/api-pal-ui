@@ -12,10 +12,10 @@ import {
   CalendarPlus
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useDoctorAuthContext } from "@/hooks/useDoctorAuth";
+import { useDoctorAuth } from "@/hooks/useDoctorAuth";
 
 export default function DoctorDashboard() {
-  const { doctor } = useDoctorAuthContext();
+  const { doctor } = useDoctorAuth();
 
   // Mock data - replace with real API calls
   const stats = [

@@ -7,11 +7,11 @@ import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Stethoscope, Mail, Lock, AlertCircle, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useDoctorAuthContext } from "@/hooks/useDoctorAuth";
+import { useDoctorAuth } from "@/hooks/useDoctorAuth";
 import { useToast } from "@/hooks/use-toast";
 
 export default function DoctorLogin() {
-  const { isAuthenticated, login } = useDoctorAuthContext();
+  const { isAuthenticated, login } = useDoctorAuth();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({

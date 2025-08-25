@@ -11,14 +11,14 @@ import {
   Clock
 } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useDoctorAuthContext } from "@/hooks/useDoctorAuth";
+import { useDoctorAuth } from "@/hooks/useDoctorAuth";
 
 interface DoctorLayoutProps {
   children: React.ReactNode;
 }
 
 export function DoctorLayout({ children }: DoctorLayoutProps) {
-  const { doctor, logout } = useDoctorAuthContext();
+  const { doctor, logout } = useDoctorAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
